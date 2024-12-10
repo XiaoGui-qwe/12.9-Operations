@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            align-items: center;
+            margin-top: 20px;
+        }
+        #toggleBtn {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="password" id="passwordInput" placeholder="请输入密码">
+        <button id="toggleBtn">显示密码</button>
+    </div>
+
+    <script>
+        var passwordInput = document.getElementById('passwordInput');
+        var toggleBtn = document.getElementById('toggleBtn');
+
+        toggleBtn.addEventListener('click', function() {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleBtn.textContent = '隐藏密码';
+            } else {
+                passwordInput.type = 'password'; 
+                toggleBtn.textContent = '显示密码'; 
+            }
+        });
+    </script>
+</body>
+</html>

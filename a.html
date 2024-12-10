@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div id="news"></div>
+   <input type="button" value="变大50px">
+   <input type="button" value="变大80px">
+   <input type="button" value="还原">
+</body>
+<script>
+    function news(){
+    var news =document.getElementById ("news");
+   news.innerHTML ="出了个大新闻！";
+   news.style.fontSize = "20px";
+   news.style.marginBottom="20px";
+
+    var btn =document.querySelectorAll("input[type='button']");
+    btn[0].addEventListener("click",function(){
+        news.style.fontSize = "70px";
+    });
+    btn[1].addEventListener("click",function(){
+        news.style.fontSize = "100px";
+    });
+    btn[2].addEventListener("click" , function(){
+        news.style.fontSize = "20px";
+    })
+    
+    }
+    news();
+   
+</script>
+</html>

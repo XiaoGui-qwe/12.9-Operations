@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    input{
+        color: #999;
+        width: 200px;
+        height: 30px;
+    }
+    .focus-input {
+            border: 2px solid red;
+        } 
+ </style>      
+</head>
+<body>
+    <input type = "text"value = "请输入内容"> 
+    <button id="btn1">登录</button>
+    <script>
+        var text = document.querySelector("input");   
+        text.onfocus = function(){
+            if(this.value === "请输入内容")    
+            {
+                this.value = '';
+                this.classList.add("focus-input");
+            } 
+        }
+        text.onblur = function(){    
+            if(this.value === '' )
+            {
+                this.value = "请输入内容";
+            }else{
+                this.classList.add("focus-input"); 
+            }
+        }
+    </script>
+</body>
+<ml>

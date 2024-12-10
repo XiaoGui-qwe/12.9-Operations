@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            height: 300px;
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>分数</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+<script>
+    var data  =[
+        {id:1,name:"张三",subject:"JS",score:'80'},
+        {id:2,name:"李四",subject:"JS",score:'90'},
+        {id:3,name:"李四",subject:"JS",score:'90'}
+    ];
+    var tbody = document.querySelector('tbody');
+    var table = document.querySelector('table');
+
+    table.addEventListener('click',function(e){
+        e.preventDefault();
+        if(e.target.className=='action'){
+            e.target.parentNode.parentNode.remove();
+        }
+    });
+
+    var keys = ['name', 'subject', 'score', 'action'];
+    for (var i = 0; i < data.length; i++) {
+        var tr = document.createElement('tr');
+        for (var j = 0; j < keys.length; j++) {
+            var td = document.createElement('td');
+            var key = keys[j];
+            var value = (key !== 'action') ? data[i][key] : '<button class="action">删除</button>';
+            td.innerHTML = value ? value : '';
+            tr.appendChild(td);
+        }
+        tbody.appendChild(tr);
+    }
+</script>
+</html>

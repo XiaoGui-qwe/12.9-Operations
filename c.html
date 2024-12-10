@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .smallImg {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="Big"></div>
+    <div id="Small">
+        <img src="./img/1.jpeg" alt="" class="smallImg">
+        <img src="./img/2.jpeg" alt="" class="smallImg">
+        <img src="./img/3.jpeg" alt="" class="smallImg">
+    </div>
+</body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var small = document.getElementById("Small");
+            var big = document.getElementById("Big");
+            var smallImgs = small.getElementsByTagName("img");
+            var bigImg = document.createElement("img");
+            bigImg.src = smallImgs[0].src;
+            bigImg.className = "bigImg";
+            bigImg.style.width ="200px";
+            bigImg.style.height = "200px";
+            big.appendChild(bigImg);
+            small.addEventListener("click", function(event) {
+                var target = event.target;
+                if(target.tagName.toLowerCase() === "img") {
+                    bigImg.src = target.src;
+                }
+            });
+        });
+    </script>
+</html>

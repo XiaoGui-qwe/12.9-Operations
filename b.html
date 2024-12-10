@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="love"></div>
+    <div id="comment"></div>
+</body>
+<script>
+    function createLove(n) {
+        var love = document.getElementById("love");
+        var comments = [
+                "不及格",
+                "及格",
+                "良好",
+                "优秀",
+                "非常棒",
+        ];
+
+        for (var i = 0; i < n; i++) {
+            var span = document.createElement("span");
+            span.className = "love"; 
+            span.style.backgroundImage = "url('./img/love.svg')"; 
+            span.style.width = "48px";
+            span.style.height = "48px"; 
+            span.style.display = "inline-block";
+            span.style.marginRight = "5px"; 
+
+            // 添加点击事件
+            span.addEventListener('click', (function(index) {
+                return function() {
+                    var current = love.getElementsByClassName("love");
+                    for (var j = 0; j < current.length; j++){
+                        if (j <= index) {
+                            current[j].style.backgroundImage = "url('./img/love2.svg')"; 
+                        } else {
+                            current[j].style.backgroundImage = "url('./img/love.svg')"; 
+                        }
+                    }
+                    
+                    var comment = document.getElementById("comment");
+                    comment.style.fontWeight = "bold";
+                    comment.style.fontSize = "20px";
+                    comment.style.marginLeft="10px";
+                    comment.innerHTML = comments[index];
+                   
+                };
+            })(i)); // 使用闭包保存索引
+
+            love.appendChild(span);
+        }
+    }
+    createLove(5);
+</script>
+</html>
